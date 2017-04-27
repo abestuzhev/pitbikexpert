@@ -1,0 +1,57 @@
+.bx_login_block{
+	float: right;
+	background: url('images/gui.png') no-repeat 6% 19%;
+	width: 208px;
+}
+a.bx_login_top_inline_link{
+	color: #576e75;
+	vertical-align: middle;
+	text-decoration: none;
+	font-size: 12px;
+	/*line-height: 13px;*/
+	margin:0 5px 30px;
+	border-radius:6px;
+	padding: 5px 8px;
+	border:2px solid #e3e3e3;
+	float: right;
+	font-style: oblique;
+    height: 32px;
+    line-height: 17px;
+    max-width: 150px;
+    overflow: hidden;
+}
+a.bx_login_top_inline_link_out{
+	position:absolute;
+	color: #fff !important;
+	vertical-align: middle;
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: bold;
+	margin-top:102px;
+	margin-left:141px;
+	border-radius:6px;
+	padding: 6px 7px;
+	border:2px solid #444;
+	background: #444;
+	float: right;
+}
+a.bx_login_top_inline_link:hover{
+	border:2px solid #bbb;
+}
+a.bx_login_top_inline_link_out:hover{
+	border:2px solid #333;
+	background: #333;
+}
+/*.bx_login_top_inline_icon{
+	display: inline-block;
+	margin-left: 15px;
+	width: 16px;
+	height: 13px;
+	background: url('images/gui.png') no-repeat bottom center;
+	line-height: 13px;
+}*/
+.bx_login_popup_form {
+	min-width:310px;
+	min-height:350px;
+	padding: 0 0 10px 10px;
+}
