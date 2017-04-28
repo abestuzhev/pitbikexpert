@@ -403,8 +403,169 @@
                     <span style="font-size: 12pt;"> </span><span style="font-size: 12pt;">3 этаж </span><span
                         style="font-size: 12pt;">пав.318 ТЦ Автомобили</span>
                 </p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2248.041010666514!2d37.6871664!3d55.7056589!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf20afb2ffe861859!2z0KLQlCDQkNCy0YLQvtC80L7QsdC40LvQuA!5e0!3m2!1sru!2sru!4v1467193903923"
-                        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+								<div id="map" style="width:800px; height:460px"></div>
+
+								<script type="text/javascript">
+								  // Как только будет загружен API и готов DOM, выполняем инициализацию
+								  ymaps.ready(init);
+								  var myMap;
+								  function init () {
+								    // Создание экземпляра карты и его привязка к контейнеру с
+								    // заданным id ("map")
+								    myMap = new ymaps.Map('map', {
+								      // При инициализации карты, обязательно нужно указать
+								      // ее центр и коэффициент масштабирования
+								      center: [64.50908740636078,40.601281157722454],
+								      zoom: 11
+								    });
+
+								    myMap.geoObjects.events.add([
+								      'balloonopen'
+								    ], function (e) {
+								      var geoObject = e.get('target');
+								      myMap.panTo(geoObject.geometry.getCoordinates(), {
+								        delay: 0
+								      });
+								    });
+
+								    office = new ymaps.Placemark([64.53458655736492,40.521843499999974], {
+								      name: 'Офис',
+								      address: '<span class="popap-map_subtitle">Адрес:</span> Архангельск, пр. Троицкий, д. 37, 5 этаж',
+								      number: '<span class="popap-map_subtitle">Телефон:</span> (8182) 28-50-19',
+								      email: '<span class="popap-map_subtitle">Email:</span> info@nord-oil.net',
+								      mode: '<div class="popap-map_subtitle">Часы работы:</div> пн-чт 09:00-17:00, обед 12:00-13:00 <br>пт 09:00-15:00'
+								    }, {
+								      // Изображение иконки метки
+								      iconImageHref: 'img/icon-office.png',
+								      // Размеры изображения иконки
+								      iconImageSize: [37, 56],
+								      // смещение картинки
+								      iconImageOffset: [-18, -56],
+								      // Размеры содержимого балуна
+								      balloonContentSize: [295, 169],
+								      // Задаем макет балуна - пользовательская картинка с контентом
+								      balloonLayout: "default#imageWithContent",
+								      // Картинка балуна
+								      balloonImageHref: 'img/baloon-bg.png',
+								      // Смещение картинки балуна
+								      balloonImageOffset: [0, -175],
+								      // Размеры картинки балуна
+								      balloonImageSize: [295, 169],
+								      // Балун не имеет тени
+								      balloonShadow: false,
+								      //Выравнивание по умолчанию
+								      balloonAutoPan: false
+								    }),
+
+								    laboratory = new ymaps.Placemark([64.48590455743444,40.76192750000001], {
+								      name: 'Лаборатория',
+								      address: '<span class="popap-map_subtitle">Адрес:</span> Архангельск, ул. Силикатчиков, д. 19',
+								      mode: '<div class="popap-map_subtitle">Часы работы:</div> пн-пт 09:00-17:00'
+								    }, {
+								      iconImageHref: 'img/icon-laboratory.png',
+								      iconImageSize: [37, 56],
+								      iconImageOffset: [-18, -56],
+								      balloonContentSize: [295, 169],
+								      balloonLayout: "default#imageWithContent",
+								      balloonImageHref: 'img/baloon-bg.png',
+								      balloonImageOffset: [0, -175],
+								      balloonImageSize: [295, 169],
+								      balloonShadow: false,
+								      balloonAutoPan: false
+								    }),
+
+								    refill1 = new ymaps.Placemark([64.49042105741363,40.73153749999997], {
+								      name: 'АЗС «Боброво»',
+								      address: '<span class="popap-map_subtitle">Адрес:</span> пос. Боброво, Бобровский тракт, строение 1'
+								    }, {
+								      iconImageHref: 'img/icon-refill.png',
+								      iconImageSize: [37, 56],
+								      iconImageOffset: [-18, -56],
+								      balloonContentSize: [295, 169],
+								      balloonLayout: "default#imageWithContent",
+								      balloonImageHref: 'img/baloon-bg.png',
+								      balloonImageOffset: [0, -175],
+								      balloonImageSize: [295, 169],
+								      balloonShadow: false,
+								      balloonAutoPan: false
+								    }),
+
+								    refill2 = new ymaps.Placemark([64.52591495431618,40.657977691879275], {
+								      name: 'АЗС «Ленина»',
+								      address: '<span class="popap-map_subtitle">Адрес:</span> Архангельск, ул. Ленина, 32 (пересечение ул. Ленина и Окружного шоссе)'
+								    }, {
+								      iconImageHref: 'img/icon-refill.png',
+								      iconImageSize: [37, 56],
+								      iconImageOffset: [-18, -56],
+								      balloonContentSize: [295, 169],
+								      balloonLayout: "default#imageWithContent",
+								      balloonImageHref: 'img/baloon-bg.png',
+								      balloonImageOffset: [0, -175],
+								      balloonImageSize: [295, 169],
+								      balloonShadow: false,
+								      balloonAutoPan: false
+								    }),
+
+								    refill3 = new ymaps.Placemark([64.44599223896863,40.59098147510529], {
+								      name: 'АЗС «Васьково»',
+								      address: '<span class="popap-map_subtitle">Адрес:</span> Архангельск , ул. Третья линия, д. 51, стр. 1 (трасса М-8 поворот в аэропорт Васьково)'
+								    }, {
+								      iconImageHref: 'img/icon-refill.png',
+								      iconImageSize: [37, 56],
+								      iconImageOffset: [-18, -56],
+								      balloonContentSize: [295, 169],
+								      balloonLayout: "default#imageWithContent",
+								      balloonImageHref: 'img/baloon-bg.png',
+								      balloonImageOffset: [0, -175],
+								      balloonImageSize: [295, 169],
+								      balloonShadow: false,
+								      balloonAutoPan: false
+								    }),
+
+								    // Создаем коллекцию, в которую будем добавлять метки
+								    myCollection = new ymaps.GeoObjectCollection();
+
+								    //Добавляем метки в коллекцию геообъектов.
+								    myCollection
+								            .add(office)
+								            .add(laboratory)
+								            .add(refill1)
+								            .add(refill2)
+								            .add(refill3);
+
+								    // Создаем шаблон для отображения контента балуна
+								    var myBalloonLayout = ymaps.templateLayoutFactory.createClass(
+								      '<div class="popap-map_title">$[properties.name]</div>'+
+								      '<div class="popap-map_text">$[properties.address]</div>'+
+								      '<div class="popap-map_text">$[properties.number]</div>'+
+								      '<div class="popap-map_text">$[properties.email]</div>'+
+								      '<div class="popap-map_text">$[properties.mode]</div>'+
+								      '<img id="close-balloon" src="img/icon-close.png" onclick="myMap.balloon.close()">'
+								    );
+								    // Помещаем созданный шаблон в хранилище шаблонов. Теперь наш шаблон доступен по ключу 'my#theaterlayout'.
+								    ymaps.layout.storage.add('my#theaterlayout', myBalloonLayout);
+
+								    // Задаем наш шаблон для балунов геобъектов коллекции.
+								    myCollection.options.set({
+								      balloonContentBodyLayout:'my#theaterlayout',
+								      // Максимальная ширина балуна в пикселах
+								      balloonMaxWidth: 295
+								    });
+
+								    // Добавляем коллекцию геообъектов на карту.
+								    myMap.geoObjects.add(myCollection);
+
+								    // Добавляем элементы управления.
+								    myMap.controls.add('zoomControl');
+								    myMap.controls.add('fullscreenControl');
+								  }
+								</script>
+
+                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2248.041010666514!2d37.6871664!3d55.7056589!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf20afb2ffe861859!2z0KLQlCDQkNCy0YLQvtC80L7QsdC40LvQuA!5e0!3m2!1sru!2sru!4v1467193903923"
+                        width="600" height="450" frameborder="0" style="border:0" allowfullscreen>
+                </iframe> -->
             </h2>
             <h2><span style="font-size: 12pt;">Задать вопрос</span></h2>
 

@@ -1,0 +1,28 @@
+.bx_texttype {
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: 20px;
+}
+
+.store-address {
+  margin-left: 130px;
+  /*width: 100%;*/
+}
+
+.store-address select.store-address_select {
+  display: block;
+  width: 100%;
+  max-width: none;
+}
+
+.bx_texttype {
+  font-size: 14px;
+  color: #271700;
+  text-transform: uppercase;
+}
+
+.bx_texttype span {
+  color: #CC5757;
+}
